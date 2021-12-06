@@ -22,6 +22,9 @@
        android:layout_width="0dp"
        android:layout_weight="3"
        android:layout_height="match_parent"
+       android:gravity="center_vertical"
+       android:text="我的笔记"
+       android:textSize="30dp"
        android:id="@+id/title"
 ></TextView>
 </LinearLayout>

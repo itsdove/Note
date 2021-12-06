@@ -1,13 +1,21 @@
 package com.example.myapplication;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.RadioButton;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -15,10 +23,11 @@ public class MainActivity extends AppCompatActivity {
     Adapter adapter;
     RecyclerView recyclerView;
     List<Note> notes= new LinkedList<>();
+    int mSelectPosition;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Note note=new Note();
-        note.Title="asd";
+        note.Title="我的笔记";
         notes.add(note);
         adapter = new Adapter(notes);
         super.onCreate(savedInstanceState);
@@ -28,6 +37,12 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
         recyclerView.addItemDecoration(new SpacesItemDecoration(8));
+        FloatingActionButton floatingActionButton = findViewById(R.id.fbutton);
+        floatingActionButton.setOnClickListener(view -> {
+            note.Title="我的笔记";
+            notes.add(note);
+            adapter.notifyItemChanged(mSelectPosition);
+        });
     }
 }
 
