@@ -14,6 +14,8 @@ import android.widget.RadioButton;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import org.litepal.LitePal;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
@@ -26,12 +28,14 @@ public class MainActivity extends AppCompatActivity {
     int mSelectPosition;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Note note=new Note();
-        note.Title="我的笔记";
-        notes.add(note);
-        adapter = new Adapter(notes);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        LitePal.initialize(this);
+        LitePal.getDatabase();
+        for(Note n:LitePal.findAll(Note.class)){
+            notes.add(n);
+        }
+        adapter = new Adapter(notes);
         recyclerView= findViewById(R.id.recycleview);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
@@ -39,10 +43,13 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.addItemDecoration(new SpacesItemDecoration(8));
         FloatingActionButton floatingActionButton = findViewById(R.id.fbutton);
         floatingActionButton.setOnClickListener(view -> {
+            Note note=new Note();
             note.Title="我的笔记";
             notes.add(note);
+            note.save();
             adapter.notifyItemChanged(mSelectPosition);
         });
+
     }
 }
 

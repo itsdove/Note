@@ -1,9 +1,10 @@
 package com.example.myapplication;
 
-public class Note {
+import org.litepal.crud.LitePalSupport;
+
+public class Note extends LitePalSupport {
     String Title;
     String Address;
-
     public String getTitle() {
         return Title;
     }
