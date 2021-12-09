@@ -27,7 +27,7 @@ public class DocActivity extends AppCompatActivity {
         editText = findViewById(R.id.edittext);
         readf();
     }
-public void readf(){
+    public void readf(){
     Log.d("123123", "readf: ");
     BufferedReader br = null;
     StringBuffer stringBuffer=new StringBuffer();

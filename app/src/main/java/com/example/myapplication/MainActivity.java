@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -51,9 +54,27 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuItem item=  menu.add(0,1,0,"");
+        item.setIcon(R.drawable.button_tools);
+        item.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+        item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                //Intent intent=new Intent(this,ToolsActivity.class);
+                //startActivity(intent);
+                return true;
+            }});//添加监听事件
+
+        return true;
+    }
+
+
 }
 
- class SpacesItemDecoration extends RecyclerView.ItemDecoration {
+class SpacesItemDecoration extends RecyclerView.ItemDecoration {
     private int space;
     public SpacesItemDecoration(int space) {
         this.space = space;
