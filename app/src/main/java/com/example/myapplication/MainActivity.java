@@ -63,10 +63,10 @@ public class MainActivity extends AppCompatActivity {
         item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                //Intent intent=new Intent(this,ToolsActivity.class);
-                //startActivity(intent);
+                Intent intent=new Intent(MainActivity.this,ToolsActivity.class);
+                startActivity(intent);
                 return true;
-            }});//添加监听事件
+            }});
 
         return true;
     }

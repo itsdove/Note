@@ -10,6 +10,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".MarksActivity"
+            android:exported="false"
+            android:label="MarksActivity"
+            android:parentActivityName=".ToolsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ToolsActivity"/>
+        </activity>
+        <activity
+            android:name=".WebmarkActivity"
+            android:exported="false"
+            android:label="@string/title_activity_webmark"
+            android:parentActivityName=".ToolsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ToolsActivity"/>
+        </activity>
+        <activity
             android:name=".ToolsActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity">
