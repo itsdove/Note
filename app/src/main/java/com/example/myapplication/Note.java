@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+
 import org.litepal.crud.LitePalSupport;
 
 public class Note extends LitePalSupport {

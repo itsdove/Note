@@ -14,7 +14,6 @@ import java.util.List;
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>{
     List<Note> notes;
     private Context mcontext;
-
     public Adapter(List<Note> noteList) {
         this.notes = noteList;
     }
@@ -38,6 +37,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>{
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder  {
+
         ImageView imageView;
         TextView textView;
         TextView number;
@@ -50,6 +50,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>{
                 @Override
                 public void onClick(View v) {
                     Intent intent=new Intent(mcontext,DocActivity.class);
+                    intent.putExtra("name",notes.get(getPosition()).getTitle());
                     mcontext.startActivity(intent);
                 }
             });

@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         FloatingActionButton floatingActionButton = findViewById(R.id.fbutton);
         floatingActionButton.setOnClickListener(view -> {
             Note note=new Note();
-            note.Title="我的笔记";
+            note.Title="我的笔记"+notes.size();
             notes.add(note);
             note.save();
             adapter.notifyItemChanged(mSelectPosition);

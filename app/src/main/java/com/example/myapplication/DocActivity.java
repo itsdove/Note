@@ -1,9 +1,12 @@
 package com.example.myapplication;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.EditText;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,10 +22,12 @@ import java.io.OutputStreamWriter;
 
 public class DocActivity extends AppCompatActivity {
     EditText editText;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        intent=getIntent();
         setContentView(R.layout.doclayout);
         editText = findViewById(R.id.edittext);
         readf();
@@ -33,7 +38,7 @@ public class DocActivity extends AppCompatActivity {
     StringBuffer stringBuffer=new StringBuffer();
     String line;
     try {
-        br = new BufferedReader(new InputStreamReader(openFileInput("data")));
+        br = new BufferedReader(new InputStreamReader(openFileInput(intent.getStringExtra("name"))));
        while((line=br.readLine())!=null){
            stringBuffer.append(line);
        }
@@ -58,7 +63,7 @@ public class DocActivity extends AppCompatActivity {
 
         BufferedWriter bw = null;
         try {
-            bw = new BufferedWriter(new OutputStreamWriter(openFileOutput("data", Context.MODE_PRIVATE)));
+            bw = new BufferedWriter(new OutputStreamWriter(openFileOutput(intent.getStringExtra("name"), Context.MODE_PRIVATE)));
                 bw.write(editText.getText().toString());//data中不包含换行符
         } catch (IOException e) {
             e.printStackTrace();
