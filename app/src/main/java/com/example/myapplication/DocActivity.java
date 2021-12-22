@@ -59,8 +59,6 @@ public class DocActivity extends AppCompatActivity {
 }
     @Override
     public void onBackPressed() {
-        Log.d("12366663123", "readf: ");
-
         BufferedWriter bw = null;
         try {
             bw = new BufferedWriter(new OutputStreamWriter(openFileOutput(intent.getStringExtra("name"), Context.MODE_PRIVATE)));
@@ -70,7 +68,6 @@ public class DocActivity extends AppCompatActivity {
         } finally {
             //关闭资源
             if(bw != null){
-
                 try {
                     bw.close();
                 } catch (IOException e) {
