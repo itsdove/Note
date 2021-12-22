@@ -46,7 +46,7 @@
         </activity>
         <activity
             android:name=".DocActivity"
-            android:parentActivityName=".MainActivity">
+            >
 
         </activity>
     </application>

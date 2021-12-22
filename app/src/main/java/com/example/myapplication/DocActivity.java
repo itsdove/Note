@@ -33,7 +33,6 @@ public class DocActivity extends AppCompatActivity {
         readf();
     }
     public void readf(){
-    Log.d("123123", "readf: ");
     BufferedReader br = null;
     StringBuffer stringBuffer=new StringBuffer();
     String line;
