@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -48,9 +49,15 @@ public class MainActivity extends AppCompatActivity {
         floatingActionButton.setOnClickListener(view -> {
             Note note=new Note();
             note.Title="我的笔记"+notes.size();
+            note.setId(notes.size());
             notes.add(note);
             note.save();
-            adapter.notifyItemChanged(mSelectPosition);
+            adapter.notifyItemInserted(notes.size());
+            Intent intent=new Intent(this,DocActivity.class);
+            intent.putExtra("name",notes.get(notes.size()-1).getId());
+            intent.putExtra("n",notes.get(notes.size()-1).getTitle());
+            startActivity(intent);
+
         });
 
     }

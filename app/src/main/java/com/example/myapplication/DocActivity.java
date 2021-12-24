@@ -1,10 +1,9 @@
 package com.example.myapplication;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+
 import android.widget.EditText;
 
 
@@ -12,9 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -31,13 +27,14 @@ public class DocActivity extends AppCompatActivity {
         setContentView(R.layout.doclayout);
         editText = findViewById(R.id.edittext);
         readf();
+        setTitle(intent.getStringExtra("n"));
     }
     public void readf(){
     BufferedReader br = null;
     StringBuffer stringBuffer=new StringBuffer();
     String line;
     try {
-        br = new BufferedReader(new InputStreamReader(openFileInput(intent.getStringExtra("name"))));
+        br = new BufferedReader(new InputStreamReader(openFileInput(intent.getIntExtra("name",-1)+".txt")));
        while((line=br.readLine())!=null){
            stringBuffer.append(line);
        }
@@ -60,7 +57,7 @@ public class DocActivity extends AppCompatActivity {
     public void onBackPressed() {
         BufferedWriter bw = null;
         try {
-            bw = new BufferedWriter(new OutputStreamWriter(openFileOutput(intent.getStringExtra("name"), Context.MODE_PRIVATE)));
+            bw = new BufferedWriter(new OutputStreamWriter(openFileOutput(intent.getIntExtra("name",-1)+".txt", Context.MODE_PRIVATE)));
                 bw.write(editText.getText().toString());//data中不包含换行符
         } catch (IOException e) {
             e.printStackTrace();
