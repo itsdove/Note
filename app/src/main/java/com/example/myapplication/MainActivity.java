@@ -1,27 +1,17 @@
 package com.example.myapplication;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import org.litepal.LitePal;
-
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -36,9 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         LitePal.initialize(this);
         LitePal.getDatabase();
-        for(Note n:LitePal.findAll(Note.class)){
-            notes.add(n);
-        }
+        notes=LitePal.findAll(Note.class);
         adapter = new Adapter(notes);
         recyclerView= findViewById(R.id.recycleview);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);

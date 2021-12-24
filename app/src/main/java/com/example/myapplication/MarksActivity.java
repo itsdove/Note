@@ -6,7 +6,6 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.databinding.ActivityMarksBinding;
-import com.example.myapplication.databinding.ActivityWebmarkBinding;
 
 public class MarksActivity extends AppCompatActivity {
 
