@@ -18,7 +18,7 @@ public class ToolsActivity extends AppCompatActivity {
         cardView_webmark.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(ToolsActivity.this,WebmarkActivity.class);
+                Intent intent=new Intent(ToolsActivity.this, WebpageCollectionActivity.class);
                 startActivity(intent);
             }
         });

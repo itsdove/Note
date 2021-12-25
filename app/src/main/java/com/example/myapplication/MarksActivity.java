@@ -1,12 +1,13 @@
 package com.example.myapplication;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.databinding.ActivityMarksBinding;
-import com.example.myapplication.databinding.ActivityWebmarkBinding;
 
 public class MarksActivity extends AppCompatActivity {
 
@@ -34,7 +35,22 @@ public class MarksActivity extends AppCompatActivity {
         });
     }
     private void showAddDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MarksActivity.this);
+        builder.setView(MarksActivity.this.getLayoutInflater().inflate(R.layout.dialog_webpagecollection, null));
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
 
+            }
+        });
+        builder.setPositiveButton("CANCEL", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        AlertDialog dlg=builder.create();
+        dlg.show();
     }
     /*
     @Override
