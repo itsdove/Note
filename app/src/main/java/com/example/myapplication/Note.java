@@ -1,10 +1,19 @@
 package com.example.myapplication;
 
+
 import org.litepal.crud.LitePalSupport;
 
 public class Note extends LitePalSupport {
     String Title;
-    String Address;
+    int id;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getTitle() {
         return Title;
     }
@@ -13,11 +22,4 @@ public class Note extends LitePalSupport {
         Title = title;
     }
 
-    public String getAddress() {
-        return Address;
-    }
-
-    public void setAddress(String address) {
-        Address = address;
-    }
 }

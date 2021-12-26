@@ -1,26 +1,17 @@
 package com.example.myapplication;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.RadioButton;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import org.litepal.LitePal;
-
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -35,9 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         LitePal.initialize(this);
         LitePal.getDatabase();
-        for(Note n:LitePal.findAll(Note.class)){
-            notes.add(n);
-        }
+        notes=LitePal.findAll(Note.class);
         adapter = new Adapter(notes);
         recyclerView= findViewById(R.id.recycleview);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
@@ -47,10 +36,16 @@ public class MainActivity extends AppCompatActivity {
         FloatingActionButton floatingActionButton = findViewById(R.id.fbutton);
         floatingActionButton.setOnClickListener(view -> {
             Note note=new Note();
-            note.Title="我的笔记";
+            note.Title="我的笔记"+notes.size();
+            note.setId(notes.size());
             notes.add(note);
             note.save();
-            adapter.notifyItemChanged(mSelectPosition);
+            adapter.notifyItemInserted(notes.size());
+            Intent intent=new Intent(this,DocActivity.class);
+            intent.putExtra("name",notes.get(notes.size()-1).getId());
+            intent.putExtra("n",notes.get(notes.size()-1).getTitle());
+            startActivity(intent);
+
         });
 
     }
