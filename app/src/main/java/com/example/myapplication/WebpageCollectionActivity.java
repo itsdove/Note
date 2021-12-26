@@ -1,7 +1,5 @@
 package com.example.myapplication;
 
-import static java.security.AccessController.getContext;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -19,15 +17,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.databinding.ActivityWebpagecollectionBinding;
-import com.google.android.material.tabs.TabLayout;
 
 import org.litepal.LitePal;
-import org.litepal.crud.LitePalSupport;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 
 public class WebpageCollectionActivity extends AppCompatActivity {
