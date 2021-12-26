@@ -5,6 +5,7 @@
     <list>
         <mapping class="com.example.myapplication.Note"></mapping>
         <mapping class="com.example.myapplication.WebPageCollection"></mapping>
+        <mapping class="com.example.myapplication.RecordItem"></mapping>
     </list>
 
 </litepal>

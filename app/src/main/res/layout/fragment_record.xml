@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RecordFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/ET_RECORD_TITLE"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:enabled="false"
+            android:inputType="text"
+            android:text="TITLE"
+            android:textColor="#673AB7"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+            app:layout_constraintTop_toBottomOf="@+id/ET_RECORD_TITLE"
+            app:layout_constraintVertical_bias="0.0">
+
+            <RatingBar
+                android:id="@+id/RATINGBAR_RECORD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:progressTint="#FFEB3B"
+                android:rating="5" />
+
+            <RadioGroup
+                android:id="@+id/RG_RECORD_TYPE"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/RB_RECORD_MUSIC"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="fill_horizontal"
+                    android:layout_weight="1"
+                    android:text="MUSIC" />
+
+                <RadioButton
+                    android:id="@+id/RB_RECORD_VIDEO"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="fill_horizontal"
+                    android:layout_weight="1"
+                    android:text="VIDEO" />
+
+                <RadioButton
+                    android:id="@+id/RB_RECORD_BOOK"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="BOOK" />
+
+            </RadioGroup>
+
+            <RadioGroup
+                android:id="@+id/RG_RECORD_STATE"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/RB_RECORD_0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="未" />
+
+                <RadioButton
+                    android:id="@+id/RB_RECORD_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="fill_horizontal"
+                    android:layout_weight="1"
+                    android:text="正在" />
+
+                <RadioButton
+                    android:id="@+id/RB_RECORD_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="已" />
+
+            </RadioGroup>
+
+            <Switch
+                android:id="@+id/SWITCH_RECORD"
+                android:layout_width="149dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text=" EDIT" />
+
+            <EditText
+                android:id="@+id/ET_RECORD_URL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:enabled="false"
+                android:hint="URL"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/ET_RECORD_DESCPTION"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:enabled="false"
+                android:gravity="top"
+                android:hint="DESCPRITION"
+                android:inputType="textMultiLine|text"
+                android:minLines="5" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <Button
+                android:id="@+id/BUTTON_RECORD_OK"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="#FFFFFF"
+                android:text="OK"
+                android:textColor="#673AB7"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/BUTTON_RECORD_CANCEL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="#FFFFFF"
+                android:text="CANCEL"
+                android:textColor="#673AB7"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
