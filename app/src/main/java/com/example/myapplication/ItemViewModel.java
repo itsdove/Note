@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ItemViewModel extends ViewModel {
+public class ItemViewModel extends ViewModel  {
     private RecordItem recordItem=new RecordItem();
     private List<RecordItem> recordItemList=new ArrayList<>();
     private int pos=-1;

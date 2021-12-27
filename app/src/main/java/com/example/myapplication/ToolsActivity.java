@@ -23,12 +23,9 @@ public class ToolsActivity extends AppCompatActivity {
             }
         });
         CardView cardView_marks=findViewById(R.id.BUTTON_MARKS);
-        cardView_marks.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(ToolsActivity.this,MarksActivity.class);
-                startActivity(intent);
-            }
+        cardView_marks.setOnClickListener(v -> {
+            Intent intent=new Intent(ToolsActivity.this,MarksActivity.class);
+            startActivity(intent);
         });
     }
 }

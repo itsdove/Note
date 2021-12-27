@@ -1,24 +1,43 @@
 package com.example.myapplication;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
+import com.baidu.speech.EventListener;
+import com.baidu.speech.EventManager;
+import com.baidu.speech.EventManagerFactory;
+import com.baidu.speech.asr.SpeechConstant;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
-public class DocActivity extends AppCompatActivity {
+public class DocActivity extends AppCompatActivity implements EventListener {
     EditText editText;
     Intent intent;
+    protected EditText txtResult;//识别结果
+    protected Button startBtn;//开始识别，持续一定时间不说话会自动停止，需要再次打开
+    protected Button stopBtn;//停止识别,立即停止，直接输出已经识别的内容
+    private EventManager asr;//语音识别核心库
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +45,18 @@ public class DocActivity extends AppCompatActivity {
         intent=getIntent();
         setContentView(R.layout.doclayout);
         editText = findViewById(R.id.edittext);
+        startBtn = (Button) findViewById(R.id.b1);
+        stopBtn = (Button) findViewById(R.id.b2);
         readf();
         setTitle(intent.getStringExtra("n"));
+        initView();
+        initPermission();
+
+        //初始化EventManager对象
+        asr = EventManagerFactory.create(this, "asr");
+        //注册自己的输出事件类
+        asr.registerListener(this); //  EventListener 中 onEvent方法
+
     }
     public void readf(){
     BufferedReader br = null;
@@ -72,6 +101,75 @@ public class DocActivity extends AppCompatActivity {
             }
         }
         super.onBackPressed();
+    }
+    private void initPermission() {
+        String permissions[] = {Manifest.permission.RECORD_AUDIO,
+                Manifest.permission.ACCESS_NETWORK_STATE,
+                Manifest.permission.INTERNET,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+        };
+
+        ArrayList<String> toApplyList = new ArrayList<String>();
+
+        for (String perm : permissions) {
+            if (PackageManager.PERMISSION_GRANTED != ContextCompat.checkSelfPermission(this, perm)) {
+                toApplyList.add(perm);
+                //进入到这里代表没有权限
+            }
+        }
+        String tmpList[] = new String[toApplyList.size()];
+        if (!toApplyList.isEmpty()) {
+            ActivityCompat.requestPermissions(this, toApplyList.toArray(tmpList), 123);
+        }
+
+    }
+
+
+    private void initView() {
+
+
+        startBtn.setOnClickListener(new View.OnClickListener() {//点击开始按钮
+            @Override
+            public void onClick(View v) {
+                asr.send(SpeechConstant.ASR_START, null, null, 0, 0);
+            }
+        });
+        stopBtn.setOnClickListener(new View.OnClickListener() {//点击停止按钮
+            @Override
+            public void onClick(View v) {
+                asr.send(SpeechConstant.ASR_STOP, null, null, 0, 0);
+            }
+        });
+    }
+
+    @Override
+    public void onEvent(String name, String params, byte[] data, int offset, int length) {
+
+        if (name.equals(SpeechConstant.CALLBACK_EVENT_ASR_PARTIAL)) {
+            // 识别相关的结果都在这里
+            if (params == null || params.isEmpty()) {
+                return;
+            }
+            if (params.contains("\"final_result\"")) {
+                // 一句话的最终识别结果
+                String regrex = "\\[(.*?),";  //使用正则表达式抽取我们需要的内容
+                Pattern pattern = Pattern.compile(regrex);
+                Matcher matcher = pattern.matcher(params);
+                if (matcher.find()) {
+                    int a  = matcher.group(0).indexOf("[");
+                    int b  = matcher.group(0).indexOf(",");
+                    editText.setText(matcher.group(0).substring(a+2,b-3));
+                }
+            }
+        }
+
+    }
+
+
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
     }
 }
 
