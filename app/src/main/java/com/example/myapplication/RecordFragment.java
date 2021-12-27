@@ -90,12 +90,16 @@ public class RecordFragment extends Fragment {
             binding.ETRECORDTITLE.setText(recordItem.getTitle());
             binding.ETRECORDURL.setText(recordItem.getUrl());
             binding.ETRECORDDESCPTION.setText(recordItem.getDescription());
+            String str="";
             switch (recordItem.getType()){
-                case 0:binding.RBRECORDBOOK.setChecked(true);break;
-                case 1:binding.RBRECORDVIDEO.setChecked(true);break;
-                case 2:binding.RBRECORDMUSIC.setChecked(true);break;
+                case 0:binding.RBRECORDBOOK.setChecked(true);str="阅读";break;
+                case 1:binding.RBRECORDVIDEO.setChecked(true);str="观看";break;
+                case 2:binding.RBRECORDMUSIC.setChecked(true);str="听";break;
                 default:break;
             }
+            binding.RBRECORD0.setText("未"+str);
+            binding.RBRECORD1.setText("正在"+str);
+            binding.RBRECORD2.setText("已"+str);
             switch (recordItem.getState()){
                 case 0:binding.RBRECORD0.setChecked(true);break;
                 case 1:binding.RBRECORD1.setChecked(true);break;
