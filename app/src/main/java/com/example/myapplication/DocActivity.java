@@ -7,6 +7,8 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -45,11 +47,10 @@ public class DocActivity extends AppCompatActivity implements EventListener {
         intent=getIntent();
         setContentView(R.layout.doclayout);
         editText = findViewById(R.id.edittext);
-        startBtn = (Button) findViewById(R.id.b1);
-        stopBtn = (Button) findViewById(R.id.b2);
+
         readf();
         setTitle(intent.getStringExtra("n"));
-        initView();
+
         initPermission();
 
         //初始化EventManager对象
@@ -125,22 +126,7 @@ public class DocActivity extends AppCompatActivity implements EventListener {
     }
 
 
-    private void initView() {
 
-
-        startBtn.setOnClickListener(new View.OnClickListener() {//点击开始按钮
-            @Override
-            public void onClick(View v) {
-                asr.send(SpeechConstant.ASR_START, null, null, 0, 0);
-            }
-        });
-        stopBtn.setOnClickListener(new View.OnClickListener() {//点击停止按钮
-            @Override
-            public void onClick(View v) {
-                asr.send(SpeechConstant.ASR_STOP, null, null, 0, 0);
-            }
-        });
-    }
 
     @Override
     public void onEvent(String name, String params, byte[] data, int offset, int length) {
@@ -158,15 +144,26 @@ public class DocActivity extends AppCompatActivity implements EventListener {
                 if (matcher.find()) {
                     int a  = matcher.group(0).indexOf("[");
                     int b  = matcher.group(0).indexOf(",");
-                    editText.setText(matcher.group(0).substring(a+2,b-3));
+                    editText.setText(editText.getText()+matcher.group(0).substring(a+2,b-3));
                 }
             }
         }
 
     }
 
-
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuItem item=  menu.add(0,1,0,"");
+        item.setIcon(R.drawable.yy);
+        item.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+        item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                asr.send(SpeechConstant.ASR_START, null, null, 0, 0);
+                return true;
+    }});
+        return true;
+    }
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
 
