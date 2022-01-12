@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.mark;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,7 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.myapplication.R;
 import com.example.myapplication.databinding.FragmentRecordBinding;
+import com.example.myapplication.noteall.ItemViewModel;
 
 import java.util.List;
 

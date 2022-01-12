@@ -4,7 +4,7 @@
 //
 // For instance,
 //
-// In MainActivity.java:
+// In Notelist.java:
 //    static {
 //       System.loadLibrary("myapplication");
 //    }

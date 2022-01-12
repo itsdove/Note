@@ -1,10 +1,10 @@
-package com.example.myapplication;
+package com.example.myapplication.noteall;
 
 
 import org.litepal.crud.LitePalSupport;
 
 public class Note extends LitePalSupport {
-    String Title;
+    public String Title;
     int id;
     public int getId() {
         return id;

@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.noteall;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -15,6 +15,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.myapplication.R;
 
 import java.io.File;
 import java.util.List;
@@ -53,7 +55,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>{
             imageView = itemView.findViewById(R.id.image);
             textView = itemView.findViewById(R.id.title);
             itemView.setOnClickListener(v -> {
-                Intent intent=new Intent(mcontext,DocActivity.class);
+                Intent intent=new Intent(mcontext, DocActivity.class);
                 intent.putExtra("name",notes.get(getAdapterPosition()).getId());
                 intent.putExtra("n",notes.get(getAdapterPosition()).getTitle());
                 mcontext.startActivity(intent);

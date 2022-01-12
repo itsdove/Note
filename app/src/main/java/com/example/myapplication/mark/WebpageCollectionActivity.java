@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.mark;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.R;
 import com.example.myapplication.databinding.ActivityWebpagecollectionBinding;
 
 import org.litepal.LitePal;

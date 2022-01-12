@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.mark;
 
 import org.litepal.crud.LitePalSupport;
 

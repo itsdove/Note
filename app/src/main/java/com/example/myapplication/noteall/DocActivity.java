@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.noteall;
 
 import android.Manifest;
 import android.content.Context;
@@ -22,6 +22,7 @@ import com.baidu.speech.EventListener;
 import com.baidu.speech.EventManager;
 import com.baidu.speech.EventManagerFactory;
 import com.baidu.speech.asr.SpeechConstant;
+import com.example.myapplication.R;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.mark;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,7 +12,9 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.R;
 import com.example.myapplication.databinding.FragmentRecordlistBinding;
+import com.example.myapplication.noteall.ItemViewModel;
 
 import java.util.List;
 

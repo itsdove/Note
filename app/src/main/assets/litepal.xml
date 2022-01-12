@@ -3,9 +3,9 @@
     <dbname value="notedatabase" />
     <version value="1" />
     <list>
-        <mapping class="com.example.myapplication.Note"></mapping>
-        <mapping class="com.example.myapplication.WebPageCollection"></mapping>
-        <mapping class="com.example.myapplication.RecordItem"></mapping>
+        <mapping class="com.example.myapplication.noteall.Note"></mapping>
+        <mapping class="com.example.myapplication.mark.WebPageCollection"></mapping>
+        <mapping class="com.example.myapplication.mark.RecordItem"></mapping>
     </list>
 
 </litepal>

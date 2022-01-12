@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.mark;
 
 import android.os.Bundle;
 
@@ -7,7 +7,12 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.myapplication.R;
 import com.example.myapplication.databinding.ActivityMarksBinding;
+import com.example.myapplication.mark.RecordFragment;
+import com.example.myapplication.mark.RecordItem;
+import com.example.myapplication.mark.RecordlistFragment;
+import com.example.myapplication.noteall.ItemViewModel;
 
 import org.litepal.LitePal;
 

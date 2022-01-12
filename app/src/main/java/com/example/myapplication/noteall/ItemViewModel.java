@@ -1,6 +1,8 @@
-package com.example.myapplication;
+package com.example.myapplication.noteall;
 
 import androidx.lifecycle.ViewModel;
+
+import com.example.myapplication.mark.RecordItem;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.myapplication">
+
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -10,63 +11,51 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-<application
+
+    <application
         android:allowBackup="true"
-        android:testOnly="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:testOnly="false"
         android:theme="@style/Theme.MyApplication">
         <activity
-            android:name=".MarksActivity"
+            android:name=".MainActivity"
+            android:exported="true" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".mark.MarksActivity"
             android:exported="false"
             android:label="MarksActivity"
-            android:parentActivityName=".ToolsActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ToolsActivity"/>
-        </activity>
-        <activity
-            android:name=".WebpageCollectionActivity"
-            android:exported="false"
-            android:label="@string/title_activity_webmark"
-            android:parentActivityName=".ToolsActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ToolsActivity"/>
-        </activity>
-        <activity
-            android:name=".ToolsActivity"
-            android:exported="false"
-            android:parentActivityName=".MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
-        </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".DocActivity"
             >
 
         </activity>
+        <activity
+            android:name=".mark.WebpageCollectionActivity"
+            android:exported="false"
+            android:label="@string/title_activity_webmark"
+           >
+
+        </activity>
+
+        <activity android:name=".noteall.DocActivity" />
+
         <meta-data
             android:name="com.baidu.speech.APP_ID"
-            android:value="25420483"></meta-data>
+            android:value="25420483" />
         <meta-data
             android:name="com.baidu.speech.API_KEY"
-            android:value="QtGVxGFIHXGvvH1YxEq2qsF2"></meta-data>
+            android:value="QtGVxGFIHXGvvH1YxEq2qsF2" />
         <meta-data
             android:name="com.baidu.speech.SECRET_KEY"
-            android:value="dmmBSGfmmgbe9j3Tjc5n9ioBOYgn4uS8"></meta-data>
+            android:value="dmmBSGfmmgbe9j3Tjc5n9ioBOYgn4uS8" />
     </application>
 
 </manifest>

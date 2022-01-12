@@ -5,7 +5,7 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MarksActivity">
+    tools:context=".mark.MarksActivity">
 
     <FrameLayout
         android:id="@+id/FRAGMENT_M"
