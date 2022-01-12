@@ -1,6 +1,7 @@
 package com.example.myapplication.clock;
 
 import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
@@ -17,11 +18,13 @@ public class Fqclock extends Fragment {
     TextView textViewStart;
     TextView textViewStop;
     private int interval=0;
+    static  View root ;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-
-        View root = inflater.inflate(R.layout.activity_main2, container, false);
+        if (root == null) {
+            root = inflater.inflate(R.layout.activity_main2, container, false);
+        }
         clockView = root.findViewById(R.id.clockView);
         textViewStart = root.findViewById(R.id.tv_start);
         textViewStop=root.findViewById(R.id.tv_stop);
