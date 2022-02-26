@@ -37,9 +37,6 @@ import java.util.regex.Pattern;
 public class DocActivity extends AppCompatActivity implements EventListener {
     EditText editText;
     Intent intent;
-    protected EditText txtResult;//识别结果
-    protected Button startBtn;//开始识别，持续一定时间不说话会自动停止，需要再次打开
-    protected Button stopBtn;//停止识别,立即停止，直接输出已经识别的内容
     private EventManager asr;//语音识别核心库
 
     @Override
